@@ -1,0 +1,56 @@
+# Snake, Water, Gun  Game
+
+# Import the random module to generate random choices
+import random
+
+# Define a function to determine the game result
+def gamewin(comp, you):
+    if comp == you:
+        return None
+    elif comp == 's':
+        if you == 'w':
+            return False
+        elif you == 'g':
+            return True   
+    elif comp == 'w':
+        if you == 's':
+            return True
+        elif you == 'g':
+            return False 
+    elif comp == 'g':
+        if you == 'w':
+            return True
+        elif you == 's':
+            return False          
+
+# Display the prompt for the user's choice
+print("Comp 1 turn: Snake(s), Water(w), or Gun(g)?")
+
+# Generate a random choice for the computer (comp)
+randNo = random.randint(1, 3)
+
+# Map the random number to a choice for the computer
+if randNo == 1:
+    comp = 's'
+elif randNo == 2:
+    comp = "w"
+elif randNo == 3:
+    comp = "g"
+
+# Get the user's choice
+you = input("Player's 2 turn: Snake(s), Water(w), or Gun(g)?")
+
+# Determine the game result using the gamewin function
+result = gamewin(comp, you)
+
+# Display the computer's choice and the user's choice
+print(f"Computer chose {comp}")
+print(f"You chose {you}")
+
+# Display the game result
+if result == None:
+    print("The game is a tie!")
+elif result:
+    print("You win!")
+else:
+    print("You lose")
